@@ -87,3 +87,56 @@ This script has reached a good functional state, successfully archiving profiles
 ## Output Structure
 
 For each archival process, a new folder will be created in the script's directory with the following structure:
+IGNORE_WHEN_COPYING_END
+
+your_target_user_handle_archive_YYYYMMDD_HHMMSS/
+├── assets/
+│ ├── profile_banner_image_uuid.jpg
+│ ├── profile_avatar_image_uuid.jpg
+│ ├── post_author_avatar_uuid.jpg
+│ └── embedded_post_image_uuid.jpg
+│ └── ... (all other downloaded images)
+├── archive_data.csv
+└── profile_archive.html
+
+
+*   **`assets/`**: Contains all downloaded images (profile pictures, banners, post images).
+*   **`archive_data.csv`**: The structured CSV data of all posts.
+*   **`profile_archive.html`**: The browsable HTML timeline.
+
+## Threading Logic
+
+The script attempts to organize the HTML output to display threads more naturally. When a post is displayed, any replies made *by the archived user* to that post (and subsequent replies by them in that thread) are displayed immediately following it. This is achieved by post-processing the initially fetched feed.
+
+## Disclaimer
+
+*   The Bluesky API is still evolving, and changes to the API may break this script.
+*   Always be mindful of Bluesky's Terms of Service and API rate limits. This script includes basic delays, but excessive use could lead to temporary restrictions.
+*   This tool is for personal archiving purposes. Respect data privacy and copyright.
+
+## Contributing
+
+Contributions, bug reports, and feature requests are welcome! Please feel free to open an issue or submit a pull request.
+
+## License
+MIT License
+
+Copyright (c) 2025 [Bluetunax](https://github.com/bluetunax/)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
